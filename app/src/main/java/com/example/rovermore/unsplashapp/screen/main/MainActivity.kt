@@ -4,16 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rovermore.unsplashapp.R
-import com.example.rovermore.unsplashapp.UnsplashApp
+import com.example.rovermore.unsplashapp.*
 import com.example.rovermore.unsplashapp.domain.model.PhotoFromList
-import com.example.rovermore.unsplashapp.gone
-import com.example.rovermore.unsplashapp.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity(), MainPresenterView {
+class MainActivity : AppCompatActivity(), MainPresenterView, MainAdapter.OnItemClicked {
 
     @Inject
     lateinit var mainPresenter: MainPresenter
@@ -40,7 +37,7 @@ class MainActivity : AppCompatActivity(), MainPresenterView {
         recyclerView = mainRecyclerView
         recyclerView.gone()
         recyclerView.layoutManager = layoutManager
-        adapter = MainAdapter(this, null)
+        adapter = MainAdapter(this, null, this)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
     }
@@ -63,5 +60,13 @@ class MainActivity : AppCompatActivity(), MainPresenterView {
     override fun onReceiveMoreResults(positionIndex: Int, photoList: MutableList<PhotoFromList>) {
         this.photoList.addAll(positionIndex, photoList)
         recyclerView.adapter!!.notifyItemRangeInserted(positionIndex, photoList.size)
+    }
+
+    override fun itemClicked(photo: PhotoFromList) {
+        startNavigationToDetailActivity(photo)
+    }
+
+    private fun startNavigationToDetailActivity(photo: PhotoFromList) {
+        routeToDetailActivity(photo.id)
     }
 }

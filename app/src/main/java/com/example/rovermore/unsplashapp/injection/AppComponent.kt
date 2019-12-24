@@ -4,6 +4,7 @@ import com.example.rovermore.unsplashapp.injection.module.client.ApiModule
 import com.example.rovermore.unsplashapp.injection.module.domain.repository.ApiRepositoryModule
 import com.example.rovermore.unsplashapp.injection.module.domain.service.ServiceModel
 import com.example.rovermore.unsplashapp.injection.module.usecase.UnsplashUseCaseModule
+import com.example.rovermore.unsplashapp.screen.detail.DetailActivity
 import com.example.rovermore.unsplashapp.screen.main.MainActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -21,4 +22,5 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(mainActivity: MainActivity)
+    fun inject(detailActivity: DetailActivity)
 }

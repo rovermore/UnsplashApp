@@ -12,8 +12,15 @@ import kotlinx.android.synthetic.main.list_item_photo.view.*
 
 class MainAdapter
     (var context: Context,
-     var photoList: MutableList<PhotoFromList>?
+     var photoList: MutableList<PhotoFromList>?,
+     var itemClicked: OnItemClicked
 ): RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
+
+    lateinit var currentPhoto: PhotoFromList
+
+    interface OnItemClicked {
+        fun itemClicked(photo: PhotoFromList)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -43,11 +50,12 @@ class MainAdapter
 
         override fun onClick(v: View?) {
 
-            //TODO INTENT TO DETAIL ACTIVITY
-
+            itemClicked.itemClicked(currentPhoto)
         }
 
         fun bindView(selectedPhoto: PhotoFromList) {
+            currentPhoto = selectedPhoto
+
             Picasso.with(context)
                 .load(selectedPhoto.photoUrls.small)
                 .fit().centerCrop()

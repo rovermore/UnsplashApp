@@ -27,7 +27,6 @@ class MainPresenter
 
     private fun loadPhotoList() {
         loadMoreEntries = false
-
         CoroutineScope(Dispatchers.IO).launch{
 
             val photoList = getPhotoListUseCase.bind(GetPhotoListUseCase.Params(API_KEY, pageNumber.toString()))
@@ -58,8 +57,6 @@ class MainPresenter
                     super.onScrolled(recyclerView, dx, dy)
                 }
             })
-
-
     }
 
     private fun setUpScrollLoader() {
