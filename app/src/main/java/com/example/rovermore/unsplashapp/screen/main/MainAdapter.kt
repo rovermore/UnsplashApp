@@ -1,4 +1,4 @@
-package com.example.rovermore.unsplashapp.screen
+package com.example.rovermore.unsplashapp.screen.main
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class MainAdapter
      var photoList: MutableList<PhotoFromList>?
 ): RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_photo, parent, false)
 
@@ -29,7 +29,7 @@ class MainAdapter
         return photoList!!.size
     }
 
-    override fun onBindViewHolder(holder: MainAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if(!photoList.isNullOrEmpty()) {
             holder.bindView(photoList!![position])
         }

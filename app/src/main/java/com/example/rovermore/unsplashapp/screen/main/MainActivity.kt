@@ -1,4 +1,4 @@
-package com.example.rovermore.unsplashapp.screen
+package com.example.rovermore.unsplashapp.screen.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity(), MainPresenterView {
         mainPresenter.initWith(this)
 
         setUpRecyclerView()
+
+        mainPresenter.addOnScrollListener()
     }
 
-    init {
-        UnsplashApp.daggerAppComponent().inject(this)
-    }
+    init { UnsplashApp.daggerAppComponent().inject(this) }
 
     private fun setUpRecyclerView() {
         recyclerView = mainRecyclerView
@@ -46,12 +46,15 @@ class MainActivity : AppCompatActivity(), MainPresenterView {
     }
 
     private fun createUi(photoList: MutableList<PhotoFromList>) {
-        //progressbar_main.visibility = View.GONE
         recyclerView.visible()
         this.photoList = photoList
         adapter.clearMainAdapter()
         adapter.updateRepositoriesList(this.photoList)
     }
+
+    override fun getRecyclerView(): RecyclerView = recyclerView
+
+    override fun getLayoutManager(): GridLayoutManager = layoutManager
 
     override fun onReceiveFirstPhotoListResult(photoList: MutableList<PhotoFromList>) {
         createUi(photoList)

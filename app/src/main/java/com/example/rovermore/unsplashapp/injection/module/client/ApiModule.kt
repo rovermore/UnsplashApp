@@ -41,10 +41,8 @@ class ApiModule {
 
     @Provides
     fun unsplashApiClient(retrofit: Retrofit): RetrofitUnsplashApiClient {
-
         return UnsplashApiClientImpl(
             retrofit.create(RetrofitUnsplashApiClient::class.java)
-
         )
     }
 
