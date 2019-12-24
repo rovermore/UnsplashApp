@@ -5,5 +5,7 @@ import com.example.rovermore.unsplashapp.domain.model.PhotoFromList
 
 interface MainPresenterView: PresenterView {
 
-    fun setPhotoListResult(photoFromList: MutableList<PhotoFromList>)
+    fun onReceiveFirstPhotoListResult(photoList: MutableList<PhotoFromList>)
+
+    fun onReceiveMoreResults(positionIndex:Int, photoList: MutableList<PhotoFromList>)
 }
