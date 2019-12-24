@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(), MainPresenterView {
         recyclerView.gone()
         recyclerView.layoutManager = layoutManager
         adapter = MainAdapter(this, null)
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
     }
 

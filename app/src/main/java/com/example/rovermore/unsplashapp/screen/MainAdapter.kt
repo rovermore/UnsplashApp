@@ -31,7 +31,6 @@ class MainAdapter
 
     override fun onBindViewHolder(holder: MainAdapter.MyViewHolder, position: Int) {
         if(!photoList.isNullOrEmpty()) {
-
             holder.bindView(photoList!![position])
         }
     }
@@ -39,7 +38,6 @@ class MainAdapter
     inner class MyViewHolder(private val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener  {
 
         init{
-
             view.setOnClickListener(this)
         }
 
@@ -50,9 +48,10 @@ class MainAdapter
         }
 
         fun bindView(selectedPhoto: PhotoFromList) {
-
-            //TODO INFLATE IMAGE CHROME VIEW
-            Picasso.with(context).load(selectedPhoto.photoUrls.small).into(view.chromeImageView)
+            Picasso.with(context)
+                .load(selectedPhoto.photoUrls.small)
+                .fit().centerCrop()
+                .into(view.chromeImageView)
         }
     }
 
