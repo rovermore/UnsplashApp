@@ -1,4 +1,4 @@
-package com.example.rovermore.unsplashapp.core
+package com.example.rovermore.unsplashapp.core.presenter
 
 abstract class Presenter<V: PresenterView> {
 

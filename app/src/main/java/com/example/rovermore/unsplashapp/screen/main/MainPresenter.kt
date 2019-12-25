@@ -2,7 +2,7 @@ package com.example.rovermore.unsplashapp.screen.main
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rovermore.unsplashapp.BuildConfig
-import com.example.rovermore.unsplashapp.core.Presenter
+import com.example.rovermore.unsplashapp.core.presenter.Presenter
 import com.example.rovermore.unsplashapp.usecase.GetPhotoListUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

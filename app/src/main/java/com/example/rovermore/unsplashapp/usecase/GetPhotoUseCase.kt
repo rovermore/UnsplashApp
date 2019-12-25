@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 class GetPhotoUseCase
     @Inject constructor(private val unsplashService: UnsplashService): UseCaseWithParams<Photo,GetPhotoUseCase.Params> {
+
     override suspend fun bind(params: GetPhotoUseCase.Params): Photo {
         return unsplashService.getPhoto(params.id, params.apiKey)
     }

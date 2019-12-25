@@ -1,7 +1,7 @@
 package com.example.rovermore.unsplashapp.screen.detail
 
 import com.example.rovermore.unsplashapp.BuildConfig
-import com.example.rovermore.unsplashapp.core.Presenter
+import com.example.rovermore.unsplashapp.core.presenter.Presenter
 import com.example.rovermore.unsplashapp.domain.model.Photo
 import com.example.rovermore.unsplashapp.usecase.GetPhotoUseCase
 import kotlinx.coroutines.CoroutineScope
