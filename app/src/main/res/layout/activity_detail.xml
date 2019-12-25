@@ -15,43 +15,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="test"/>
-    <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="4dp"
-            android:text="Description"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"/>
+            android:contentDescription="test" app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="1.0"/>
 
-    <TextView
-            android:id="@+id/userNameTextView"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:id="@+id/textWrapper"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="User name"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-            android:id="@+id/textViewCamera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Camera"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/descriptionTextView"
+            android:orientation="vertical" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/userNameTextView"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:background="@drawable/scrim_gradient">
+
+        <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginStart="4dp"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User name"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="4dp"
+                android:visibility="gone"
+        />
+
+        <TextView
+                android:id="@+id/textViewCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="4dp"
+                android:visibility="gone"
+        />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

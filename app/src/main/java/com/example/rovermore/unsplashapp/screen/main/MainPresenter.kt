@@ -27,19 +27,30 @@ class MainPresenter
 
     private fun loadPhotoList() {
         loadMoreEntries = false
-        CoroutineScope(Dispatchers.IO).launch{
 
-            val photoList = getPhotoListUseCase.bind(GetPhotoListUseCase.Params(API_KEY, pageNumber.toString()))
+        CoroutineScope(Dispatchers.IO).launch {
 
-            withContext(Dispatchers.Main){
-                if(pageNumber == 1) {
-                    positionIndex = 0
-                    view?.onReceiveFirstPhotoListResult(photoList)
-                    pageNumber += 1
-                } else {
-                    positionIndex += photoList.size
-                    view?.onReceiveMoreResults(positionIndex, photoList)
-                    pageNumber += 1
+            try {
+                val photoList = getPhotoListUseCase.bind(GetPhotoListUseCase.Params(API_KEY, pageNumber.toString()))
+
+                withContext(Dispatchers.Main) {
+                    if (!photoList.isNullOrEmpty()) {
+                        if (pageNumber == 1) {
+                            positionIndex = 0
+                            view?.onReceiveFirstPhotoListResult(photoList)
+                            pageNumber += 1
+                        } else {
+                            positionIndex += photoList.size
+                            view?.onReceiveMoreResults(positionIndex, photoList)
+                            pageNumber += 1
+                        }
+                    } else {
+                        view?.setErrorToast()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    view?.setErrorToast()
                 }
             }
             loadMoreEntries = true

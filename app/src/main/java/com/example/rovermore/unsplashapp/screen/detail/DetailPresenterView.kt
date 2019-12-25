@@ -10,4 +10,6 @@ interface DetailPresenterView: PresenterView {
     fun setUpView(photo: Photo)
 
     fun getExtrasFromIntent()
+
+    fun showErrorToast()
 }

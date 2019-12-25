@@ -16,8 +16,6 @@ class MainAdapter
      var itemClicked: OnItemClicked
 ): RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
 
-    lateinit var currentPhoto: PhotoFromList
-
     interface OnItemClicked {
         fun itemClicked(photo: PhotoFromList)
     }
@@ -49,15 +47,15 @@ class MainAdapter
         }
 
         override fun onClick(v: View?) {
-
-            itemClicked.itemClicked(currentPhoto)
+            val position = adapterPosition
+            val currentPhoto= photoList?.get(position)
+            itemClicked.itemClicked(currentPhoto!!)
         }
 
-        fun bindView(selectedPhoto: PhotoFromList) {
-            currentPhoto = selectedPhoto
+        fun bindView(photoFromList: PhotoFromList) {
 
             Picasso.with(context)
-                .load(selectedPhoto.photoUrls.small)
+                .load(photoFromList.photoUrls.small)
                 .fit().centerCrop()
                 .into(view.chromeImageView)
         }

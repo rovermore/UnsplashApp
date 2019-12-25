@@ -1,6 +1,7 @@
 package com.example.rovermore.unsplashapp.screen.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,5 +69,9 @@ class MainActivity : AppCompatActivity(), MainPresenterView, MainAdapter.OnItemC
 
     private fun startNavigationToDetailActivity(photo: PhotoFromList) {
         routeToDetailActivity(photo.id)
+    }
+
+    override fun setErrorToast() {
+        Toast.makeText(this,resources.getText(R.string.error_loading_data),Toast.LENGTH_SHORT).show()
     }
 }

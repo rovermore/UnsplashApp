@@ -1,10 +1,12 @@
 package com.example.rovermore.unsplashapp.screen.detail
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rovermore.unsplashapp.R
 import com.example.rovermore.unsplashapp.UnsplashApp
 import com.example.rovermore.unsplashapp.domain.model.Photo
+import com.example.rovermore.unsplashapp.visible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
@@ -49,8 +51,25 @@ class DetailActivity : AppCompatActivity(), DetailPresenterView {
             .load(photo.photoUrls.regular)
             .fit().centerCrop()
             .into(detailImageView)
-        descriptionTextView.text = photo.description
-        userNameTextView.text = photo.user.name
-        textViewCamera.text = photo.exif.brand
+
+        photo.description?.let {
+            descriptionTextView.visible()
+            descriptionTextView.text = it
+        }
+
+        photo.user.name?.let {
+            userNameTextView.visible()
+            userNameTextView.text = it
+        }
+
+        photo.exif.brand?.let {
+            textViewCamera.visible()
+            textViewCamera.text = it
+        }
+
+    }
+
+    override fun showErrorToast() {
+        Toast.makeText(this, resources.getText(R.string.error_loading_data), Toast.LENGTH_SHORT).show()
     }
 }

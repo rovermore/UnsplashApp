@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UnsplashApp</string>
+
+    <string name="error_loading_data">Ha ocurrido un error al realizar la carga de datos</string>
 </resources>

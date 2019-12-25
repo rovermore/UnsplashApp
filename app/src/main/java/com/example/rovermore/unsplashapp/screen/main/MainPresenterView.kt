@@ -14,4 +14,6 @@ interface MainPresenterView: PresenterView {
     fun getRecyclerView(): RecyclerView
 
     fun getLayoutManager(): GridLayoutManager
+
+    fun setErrorToast()
 }

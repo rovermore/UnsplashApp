@@ -36,10 +36,16 @@ class DetailPresenter
     private fun loadPhoto(photoId: String) {
         CoroutineScope(Dispatchers.IO).launch {
 
-            val photo = getPhotoUseCase.bind(GetPhotoUseCase.Params(photoId, API_KEY))
+            try {
+                val photo = getPhotoUseCase.bind(GetPhotoUseCase.Params(photoId, API_KEY))
 
-            withContext(Dispatchers.Main) {
-                setUpView(photo)
+                withContext(Dispatchers.Main) {
+                    setUpView(photo)
+                }
+            } catch (e: Exception){
+                withContext(Dispatchers.Main){
+                    view?.showErrorToast()
+                }
             }
         }
     }
