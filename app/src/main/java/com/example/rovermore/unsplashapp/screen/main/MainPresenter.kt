@@ -1,6 +1,7 @@
 package com.example.rovermore.unsplashapp.screen.main
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rovermore.unsplashapp.BuildConfig
 import com.example.rovermore.unsplashapp.core.Presenter
 import com.example.rovermore.unsplashapp.usecase.GetPhotoListUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +19,7 @@ class MainPresenter
     private var isScrolling = false
     private var loadMoreEntries = true
 
-    private val API_KEY = "750b864acc2830b60bce5d64eb60c01abebfbea24ca3530dd81c79884b74fac0"
+    private val API_KEY = BuildConfig.API_KEY
 
     override fun init(view: MainPresenterView) {
         this.view = view

@@ -1,5 +1,6 @@
 package com.example.rovermore.unsplashapp.screen.detail
 
+import com.example.rovermore.unsplashapp.BuildConfig
 import com.example.rovermore.unsplashapp.core.Presenter
 import com.example.rovermore.unsplashapp.domain.model.Photo
 import com.example.rovermore.unsplashapp.usecase.GetPhotoUseCase
@@ -14,7 +15,7 @@ class DetailPresenter
 
     private var view: DetailPresenterView? = null
 
-    private val API_KEY = "750b864acc2830b60bce5d64eb60c01abebfbea24ca3530dd81c79884b74fac0"
+    private val API_KEY = BuildConfig.API_KEY
 
     override fun init(view: DetailPresenterView) {
         this.view = view
