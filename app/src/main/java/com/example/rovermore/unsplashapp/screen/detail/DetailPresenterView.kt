@@ -12,4 +12,6 @@ interface DetailPresenterView: PresenterView {
     fun getExtrasFromIntent()
 
     fun showErrorToast()
+
+    fun showErrorView()
 }

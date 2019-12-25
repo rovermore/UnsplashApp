@@ -16,7 +16,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="test" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintVertical_bias="0.0"/>
 
     <LinearLayout
             android:id="@+id/textWrapper"
@@ -59,6 +59,45 @@
                 android:textStyle="bold"
                 android:layout_marginStart="4dp"
                 android:visibility="gone"
+        />
+
+        <TextView
+                android:id="@+id/textViewModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Model"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="4dp"
+                android:visibility="gone"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/errorView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="@+id/detailImageView" android:layout_marginBottom="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detailImageView" android:layout_marginStart="8dp"
+            android:visibility="gone">
+
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_landscape_black_24dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/image_error_loading_data"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
         />
 
     </LinearLayout>

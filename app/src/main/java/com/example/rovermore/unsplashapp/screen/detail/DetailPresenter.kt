@@ -46,6 +46,7 @@ class DetailPresenter
             } catch (e: Exception){
                 withContext(Dispatchers.Main){
                     view?.showErrorToast()
+                    view?.showErrorView()
                 }
             }
         }

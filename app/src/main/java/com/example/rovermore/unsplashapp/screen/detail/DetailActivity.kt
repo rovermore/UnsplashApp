@@ -53,23 +53,40 @@ class DetailActivity : AppCompatActivity(), DetailPresenterView {
             .into(detailImageView)
 
         photo.description?.let {
-            descriptionTextView.visible()
-            descriptionTextView.text = it
+            descriptionTextView.apply {
+                visible()
+                text = it
+            }
         }
 
         photo.user.name?.let {
-            userNameTextView.visible()
-            userNameTextView.text = it
+            userNameTextView.apply {
+                visible()
+                text = it
+            }
         }
 
         photo.exif.brand?.let {
-            textViewCamera.visible()
-            textViewCamera.text = it
+            textViewCamera.apply {
+                visible()
+                text = it
+            }
+        }
+
+        photo.exif.model?.let {
+            textViewModel.apply {
+                visible()
+                text = it
+            }
         }
 
     }
 
     override fun showErrorToast() {
         Toast.makeText(this, resources.getText(R.string.error_loading_data), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showErrorView() {
+        errorView.visible()
     }
 }
