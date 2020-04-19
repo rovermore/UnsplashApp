@@ -34,9 +34,8 @@ class DetailPresenter
         }
     }
 
-    private fun loadPhoto(photoId: String) {
+    fun loadPhoto(photoId: String) {
         CoroutineScope(Dispatchers.IO).launch {
-
             try {
                 val photo = getPhotoUseCase.bind(GetPhotoUseCase.Params(photoId, API_KEY))
 
